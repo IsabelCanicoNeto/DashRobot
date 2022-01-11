@@ -1,7 +1,7 @@
 # DashRobot
  Programming dash in phyton and windows 
 NOTICE:
-Adapted from original source code Copyright 2016 Ilya Sukhanov https://github.com/IlyaSukhanov/morseapi and https://github.com/havnfun/python-dash-robot
+Adapted from original source code Copyright 2016 Ilya Sukhanov https://github.com/IlyaSukhanov/morseapi and Russ Buchanan code 2018 https://github.com/havnfun/python-dash-robot
 
 Key differences:
 
