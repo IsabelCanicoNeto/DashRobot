@@ -145,6 +145,63 @@ def TETest (dash, slowPace = False):
     turnexchange(dash, actualSpeaker, nextSpeaker, "my2", nextSpeakerName, slowPace)
 
 
+def HearingTest (dash, explicit, slowPace=False):
+
+    print("hear 2 -> suggested 1 ")
+    actualSpeaker = 2
+    suggestedSpeaker = 1
+    hearing(dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 3 -> suggested 1 ")
+    actualSpeaker = 3
+    suggestedSpeaker = 1
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 1 -> suggested 1 ")
+    actualSpeaker = 1
+    suggestedSpeaker = 1
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("TE 1 -> 2 ")
+    nextSpeaker = 2
+    nextSpeakerName = "my3"
+    turnexchange(dash, actualSpeaker, nextSpeaker, "my2", nextSpeakerName, slowPace)
+
+    print("hear 2 -> suggested 2 ")
+    actualSpeaker = 2
+    suggestedSpeaker = 2
+    hearing(dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 3 -> suggested 2 ")
+    actualSpeaker = 3
+    suggestedSpeaker = 2
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 1 -> suggested 2 ")
+    actualSpeaker = 1
+    suggestedSpeaker = 2
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("TE 2 -> 3 ")
+    nextSpeaker = 3
+    nextSpeakerName = "my4"
+    turnexchange(dash, actualSpeaker, nextSpeaker, "my2", nextSpeakerName, slowPace)
+
+    print("hear 1 -> suggested 3 ")
+    actualSpeaker = 1
+    suggestedSpeaker = 3
+    hearing(dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 2 -> suggested 3 ")
+    actualSpeaker = 2
+    suggestedSpeaker = 3
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
+    print("hear 3 -> suggested 3 ")
+    actualSpeaker = 3
+    suggestedSpeaker = 3
+    hearing (dash, suggestedSpeaker, actualSpeaker, explicit)
+
 def main():
     print ("começa")
 
@@ -157,8 +214,10 @@ def main():
 
         firstspeaker(dash,1,"my1")
 
-        TETest(dash)
-        head_pitch(3)
+        explicit = True
+        # TETest(dash, explicit)
+
+        HearingTest(dash, explicit)
 
 
         print ("close")

@@ -329,7 +329,7 @@ class robot:
         loop = asyncio.new_event_loop()
         loop.run_until_complete(self.command("neck_color", color_byte_array(color), False))
         loop.run_until_complete(self.command("left_ear_color", color_byte_array(color), False))
-        loop.run_until_complete(self.command("head_color", color_byte_array(color), False))
+        loop.run_until_complete(self.command("head_color", color_byte_array("black"), False))
         loop.run_until_complete(self.command("right_ear_color", color_byte_array(color), True))
         loop.stop()
 

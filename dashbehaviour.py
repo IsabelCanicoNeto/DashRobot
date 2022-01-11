@@ -106,18 +106,48 @@ def turnexchange_mov(dash, actualSpeaker, nextSpeaker, name, slowPace, phrase, e
         time.sleep(1.5)
         dash.say(name)
         time.sleep(1)
+    else:
+        dash.head_pitch(3)
+        time.sleep(2)
 
 def hearing(dash, suggestedSpeaker, actualSpeaker, explicit=True):
 
     hearing_mov(dash, suggestedSpeaker, actualSpeaker, explicit)
     time.sleep(1)
 
-def hearing_mov(self, suggestedSpeaker, actualSpeaker, explicit):
+def hearing_mov(dash, suggestedSpeaker, actualSpeaker, explicit):
 
-    d,d1 , angle = checkTurnmovement(actualSpeaker, nextSpeaker, slowPace)
+    i = 0
 
-    dash.head_pitch(3)
-    time.sleep(2)
+    if suggestedSpeaker == actualSpeaker:
+        while i < 4:
+            dash.head_pitch(-2)
+            #time.sleep(0.2)
+            dash.head_pitch(2)
+            time.sleep(0.2)
+            i += 1
+
+        #time.sleep(0.5)
+        if explicit :
+            dash.say ("ayayay")
+            time.sleep(1.5)
+        # "huh", "ayayay" backchanneling
+        dash.head_pitch(0)
+        time.sleep(0.5)
+    else:
+        angle = checkHeadmovement(suggestedSpeaker, actualSpeaker)
+        dash.head_yaw(angle)
+        time.sleep(0.2)
+        while i < 8:
+            dash.head_pitch(-1)
+            #time.sleep(0.2)
+            dash.head_pitch(1)
+            time.sleep(0.2)
+            i += 1
+
+        angle = 0
+        dash.head_yaw(angle)
+        time.sleep(2)
 
 
 
@@ -170,3 +200,35 @@ def checkTurnmovement (actualSpeaker, nextSpeaker, slowPace):
         else:
             angle = -1*angle
             return driveDist, driveSpeed,angle
+
+def checkHeadmovement (suggestedSpeaker, actualSpeaker):
+    speakerID1 = 1
+    speakerID2 = 2
+    speakerID3 = 3
+
+    angle = 50
+
+    if (suggestedSpeaker == actualSpeaker):
+        angle = 0
+        return angle
+
+    if (suggestedSpeaker == speakerID1):
+        if (actualSpeaker == speakerID3):
+            return angle
+        else:
+            angle = -1*angle
+            return angle
+
+    if (suggestedSpeaker == speakerID2) :
+        if (actualSpeaker == speakerID1):
+            return angle
+        else:
+            angle = -1*angle
+            return angle
+
+    if (suggestedSpeaker == speakerID3) :
+        if (actualSpeaker == speakerID2):
+            return angle
+        else:
+            angle = -1*angle
+            return angle
